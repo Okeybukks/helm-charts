@@ -1,0 +1,42 @@
+apiVersion: v1
+entries:
+  hke-chart:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-07-17T10:43:11.216389+01:00"
+    dependencies:
+    - condition: netdata.enabled
+      name: netdata
+      repository: https://netdata.github.io/helmchart/
+      version: 3.7.94
+    description: A Helm chart for Kubernetes
+    digest: ba6a029456a98c66169a9c3dfe048a277d7835da72a6da34f6a77362762d644d
+    name: hke-chart
+    type: application
+    urls:
+    - https://github.com/Okeybukks/helm-charts/hke-chart-0.1.0.tgz
+    version: 0.1.0
+  netdata:
+  - apiVersion: v2
+    appVersion: v1.46.1
+    created: "2024-07-17T10:43:11.219002+01:00"
+    description: Real-time performance monitoring, done right!
+    digest: 1d2f018eaf1bd47c81475ffd709720b054803ff2a471966d3683e866e272ad2e
+    home: https://netdata.cloud/
+    icon: https://netdata.github.io/helmchart/logo.png
+    keywords:
+    - alerting
+    - metric
+    - monitoring
+    maintainers:
+    - email: cloud-sre@netdata.cloud
+      name: Netdata Cloud SRE team
+    name: netdata
+    sources:
+    - https://github.com/netdata/helmchart
+    - https://github.com/netdata/netdata
+    type: application
+    urls:
+    - https://github.com/Okeybukks/helm-charts/charts/netdata-3.7.94.tgz
+    version: 3.7.94
+generated: "2024-07-17T10:43:11.211997+01:00"
