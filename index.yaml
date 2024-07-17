@@ -14,7 +14,7 @@ entries:
     name: hke-chart
     type: application
     urls:
-    - https://github.com/Okeybukks/helm-charts/hke-chart-0.1.0.tgz
+    - https://github.com/Okeybukks/helm-chart/helm-charts/hke-chart-0.1.0.tgz
     version: 0.1.0
   netdata:
   - apiVersion: v2
@@ -37,6 +37,6 @@ entries:
     - https://github.com/netdata/netdata
     type: application
     urls:
-    - https://github.com/Okeybukks/helm-charts/charts/netdata-3.7.94.tgz
+    - https://github.com/Okeybukks/helm-chart/helm-charts/charts/netdata-3.7.94.tgz
     version: 3.7.94
 generated: "2024-07-17T10:43:11.211997+01:00"
