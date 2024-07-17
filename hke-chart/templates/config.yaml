@@ -1,0 +1,11 @@
+{{- if .Values.cleanerDaemonset.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: imagecleanupconfig
+  namespace: default
+  labels:
+    component: imagecleanup
+data:
+  cronjobs: "{{ .Values.cleanerDaemonset.cronjob }} crictl -r unix:///var/snap/microk8s/common/run/containerd.sock rmi --prune 2>&1"
+{{- end }}

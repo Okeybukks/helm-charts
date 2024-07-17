@@ -1,0 +1,11 @@
+apiVersion: v2
+name: hke-chart
+description: A Helm chart for Kubernetes
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+dependencies:
+  - name: netdata
+    version: 3.7.94
+    repository: "https://netdata.github.io/helmchart/"
+    condition: netdata.enabled

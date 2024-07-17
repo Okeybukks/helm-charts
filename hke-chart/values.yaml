@@ -1,0 +1,26 @@
+cleanerDaemonset:
+  imagecleanup:
+    env:
+      crictlVersion: v1.30.0
+  enabled: false
+  cronjob: '0 0 */4 * *'
+netdata:
+  enabled: false
+
+  image:
+    tag: stable
+
+  restarter:
+    enabled: true
+
+  parent:
+    claiming:
+      enabled: true
+      token: cVW0WwvYr5EdY9-RPc9otIigKRHag6_31RJWEZCFBdqJ_0RxX9pPwDQhCYzckWNNyOYt-tuqi7ehOGSwkTSf6-a9JgdpCQRk_I97GvMSEnF3bT-YStFDAEdcUHwCuwcRcAzEO-w
+      rooms: 8d7c1d99-032d-4ff4-b21d-1b1c21be63ae
+
+  child:
+    claiming:
+      enabled: true
+      token: cVW0WwvYr5EdY9-RPc9otIigKRHag6_31RJWEZCFBdqJ_0RxX9pPwDQhCYzckWNNyOYt-tuqi7ehOGSwkTSf6-a9JgdpCQRk_I97GvMSEnF3bT-YStFDAEdcUHwCuwcRcAzEO-w
+      rooms: 8d7c1d99-032d-4ff4-b21d-1b1c21be63ae

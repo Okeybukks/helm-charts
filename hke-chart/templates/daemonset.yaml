@@ -1,0 +1,50 @@
+{{- if .Values.cleanerDaemonset.enabled -}}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: imagecleanup
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      component: imagecleanup
+  template:
+    metadata:
+      labels:
+        component: imagecleanup
+    spec:
+      volumes:
+        - name: containerd
+          hostPath:
+            path: /var/snap/microk8s/common/run/containerd.sock
+            type: Socket
+        - name: imagecleanupconfig
+          configMap:
+            name: imagecleanupconfig
+      containers:
+      - name: imagecleanup
+        image: alpine:latest
+        imagePullPolicy: Always
+        env:
+          - name: CRICTL_VERSION
+            value: "{{ .Values.cleanerDaemonset.imagecleanup.env.crictlVersion }}"
+          - name: CONTAINER_RUNTIME_ENDPOINT
+            value: unix:///var/snap/microk8s/common/run/containerd.sock
+        command: [
+            "sh",
+            "-c",
+            "wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$CRICTL_VERSION/crictl-$CRICTL_VERSION-linux-amd64.tar.gz && \
+            tar zxvf crictl-$CRICTL_VERSION-linux-amd64.tar.gz -C /usr/local/bin && \
+            crontab /config/cronjobs && \
+            crond -f -d 8"
+          ]
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+        volumeMounts:
+          - name: containerd
+            mountPath: /var/snap/microk8s/common/run/containerd.sock
+          - name: imagecleanupconfig
+            mountPath: /config
+{{- end }}
